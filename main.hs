@@ -1,19 +1,9 @@
 import Lib.LSystem
 import Vis
-import Linear (V3(V3), R1 (_x), R2 (_y), R3 (_z))
-import Data.Array (range)
-import Data.Char (Char)
-import Graphics.Rendering.OpenGL (ColorTable(Texture1DColorTable))
+import Linear (V3(V3))
 import qualified Data.Text as T
-import System.Posix.Internals (puts)
-import System.Posix (PathVar(VDisableChar))
-import Control.Lens
 
 prod x = produce x plantRules 
-
-dr x = draw x plantDrawRules
-
-drawScale = 1.5 
 
 times :: Int -> (a -> a) -> (a -> a)
 times 1 f = f
@@ -33,7 +23,6 @@ initSt = DrawState {
                   , tuDirection = V3 0 0 (-0.015)} ]
     , stPictures = [] --Axes (1, 10)]
 }
-
 
 plantRules :: Rules
 plantRules 'X' = T.pack "F+[[X]-X]-F[-FX]+X"

@@ -2,12 +2,7 @@ module Lib.LSystem where
 
 import Vis (VisObject(VisObjects, Line), white)
 import Linear (V3(V3), R1 (_x), R2 (_y), R3 (_z))
-import Data.Array (range)
-import Data.Char (Char)
-import Graphics.Rendering.OpenGL (ColorTable(Texture1DColorTable))
 import qualified Data.Text as T
-import System.Posix.Internals (puts)
-import System.Posix (PathVar(VDisableChar))
 import Control.Lens
 
 type Rules = Char -> T.Text 
