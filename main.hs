@@ -1,7 +1,8 @@
 import Lib.LSystem
 import Vis
-import Linear (V3(V3))
+import Linear (V3(V3), V4(V4))
 import qualified Data.Text as T
+import Lib.UI (uiBox, uiFrame, uiTextBox)
 
 prod x = produce x plantRules 
 
@@ -13,9 +14,11 @@ code = times 6 prod $ T.pack "---X"
 
 myPlant = VisObjects [draw code initSt plantDrawRules, draw code initSt dr2]
 
-opts = defaultOpts { optAntialiasing = Multisampled 4}
+opts = defaultOpts { optAntialiasing = Multisampled 4, optInitialCamera = Just $ Camera0 0 0 5 }
 
-main = animate opts (\x -> RotEulerDeg (Euler {ePitch = 0, eYaw = 30*x, eRoll = 0} )myPlant)  
+main = display opts $ VisObjects [ myPlant, uiTextBox (V4 0 0.05 0.1 0.1) (T.pack "Hello"), uiFrame]
+
+
 
 initSt = DrawState {
       stStack = [ Turtle { 
